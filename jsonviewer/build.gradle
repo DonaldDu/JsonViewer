@@ -8,7 +8,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 27
         versionCode 6
-        versionName "1.0.6"
+        versionName "1.0.6.1"
     }
 
     buildTypes {
@@ -32,4 +32,12 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.0.2'
 }
 
-apply from: 'publish.gradle'
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'user'
+    groupId = 'com.github.DonaldDu'
+    artifactId = 'JsonViewer'
+    publishVersion = android.defaultConfig.versionName
+    desc = 'desc'
+    website = 'website'
+}

@@ -117,6 +117,17 @@ public class JsonItemView extends LinearLayout {
 
     public void setIconClickListener(OnClickListener listener) {
         mIvIcon.setOnClickListener(listener);
+        mTvRight.setOnClickListener(listener);
+        if (isPlush() && mIvIcon.getVisibility() == VISIBLE) mIvIcon.post(new Runnable() {
+            @Override
+            public void run() {
+                mIvIcon.performClick();
+            }
+        });
+    }
+
+    private boolean isPlush() {
+        return getResources().getString(R.string.jsonViewer_icon_plus).equals(mIvIcon.getContentDescription().toString());
     }
 
     public void addViewNoInvalidate(View child) {
